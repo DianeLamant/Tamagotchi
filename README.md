@@ -24,3 +24,5 @@ Style animal virtuel (tamagotchi)
 Les resources sont fournis, les sons et vignettes pour représenter l'état deu bébé.
 
 Les images pour informer de la raison pour laquelle de bébé pleure
+
+Les fichiers finaux à utiliser sont dans le dossier ./src/assets/
