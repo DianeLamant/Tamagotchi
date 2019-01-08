@@ -1,56 +1,66 @@
-// var smile = document.getElementById("smile");
-// var cry = image.src='cry.png';
-// var nipple = image.src='nipple.png';
-// var sad = image.src='sad.png';
-// var surprised = image.src='surprised.png';
-// var tongue = image.src='tongue.png';
-// var sun = document.getElementById("sun");
-// var hamburger = image.src='hamburger.png';
-// var intero = image.src='intero.png';
-// var poo = image.src='poo.png';
+let cryBaby = new Audio('assets/sounds/cry.ogg');
+let happyBaby = new Audio('assets/sounds/happy.ogg');
 
-// var faces = ["assets/images/faces/cry.png","assets/images/faces/sad.png"];
-// var i = 0;
-// var renew = setInterval(function(){
-//     if(faces.length == i){
-//         i = 0;
-//     }
-//     else {
-//     document.getElementById("smile").src = faces[i]; 
-//     i++;
 
-// }
-// },1000);
-
-// var random_images_array = ["assets/images/thoughts/hamburger.png", "assets/images/thoughts/intero.png", "assets/images/thoughts/poo.png"];
-// function getRandomImage(imgAr, path) {
-//     path = path || 'assetsimages/thoughts'; // default path here
-//     var num = Math.floor( Math.random() * imgAr.length );
-//     var img = imgAr[ num ];
-//     var imgStr = '<img src="' + path + img + '" alt = "">';
-//     document.write(imgStr); document.close();
-// }
-
-// var myArray = ["assets/images/thoughts/hamburger.png","assets/images/thoughts/intero.png","assets/images/thoughts/poo.png"];
-  
-//   var randomItem = myArray[Math.floor(Math.random()*myArray.length)];
-  
-//   document.body.innerHTML = randomItem;
-
-// var shuffled = ["assets/images/thoughts/hamburger.png", "assets/images/thoughts/intero.png", "assets/images/thoughts/poo.png"];
-
-// while (theImages.length) {
-// 	shuffled.push(theImages.splice(Math.random() * theImages.length, 1));
-// }
-
-function getRandomImage() {
- 
-    var randomImage = new Array(); 
-    randomImage[0] = "assets/images/thoughts/hamburger.png"; 
-    randomImage[1] = "assets/images/thoughts/intero.png"; 
-    randomImage[2] = "assets/images/thoughts/poo.png";
-    } 
-
-var number = Math.floor(Math.random()*randomImage.length);
-document.write('<img src="'+randomImage[number]+'" />');
+let pickMood = setInterval(moodsPic, 2000);
+function moodsPic() {
+  let moods = ["assets/images/faces/cry.png","assets/images/faces/sad.png"];
+  if (document.getElementById("baby").src.endsWith('smile.png'))
+    cryBaby.play(),
+    document.getElementById("baby").src = moods[Math.floor(Math.random()*2)];
 }
+
+
+let pickState = setInterval(needsPic, 2000);
+function needsPic() {
+  let needs = ["assets/images/thoughts/hamburger.png", "assets/images/thoughts/intero.png", "assets/images/thoughts/poo.png"];
+  if (document.getElementById("needs").src.endsWith('sun.png'))
+    document.getElementById("needs").src = needs[Math.floor(Math.random()*3)];
+}
+
+function reset() {
+    let gameOver = document.getElementById("gameover");
+    let gameOn = document.getElementById("gameon");
+        if (gameOver.style.display === "none") {
+        gameOver.style.display = "block",
+        gameOn.style.display = "none";
+    } else {
+        gameOver.style.display = "none",
+        gameOn.style.display = "block";
+    }
+};
+// setTimeout(reset, 6000);
+
+
+function Feed(){
+    if (document.getElementById("needs").src.endsWith('hamburger.png')) {
+        happyBaby.play(),
+        document.getElementById("baby").src = src="assets/images/faces/smile.png",
+        document.getElementById("needs").src = src="assets/images/thoughts/sun.png";
+    }
+    else {
+        // reset();
+    }
+};
+
+function Play(){
+    if (document.getElementById("needs").src.endsWith('intero.png')) {
+        happyBaby.play(),
+        document.getElementById("baby").src = src="assets/images/faces/smile.png",
+        document.getElementById("needs").src = src="assets/images/thoughts/sun.png";
+    }
+    else {
+        // reset();
+    }
+};
+
+function Change(){
+    if (document.getElementById("needs").src.endsWith('poo.png')) {
+        happyBaby.play(),
+        document.getElementById("baby").src = src="assets/images/faces/smile.png",
+        document.getElementById("needs").src = src="assets/images/thoughts/sun.png";
+    }
+    else {
+        // reset();
+    }
+};

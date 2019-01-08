@@ -6,3 +6,11 @@
     text-align: center;
 }
 
+#gameover {
+    text-align: center;
+    padding-top: 250px;
+}
+
+p {
+    font-size: 6rem;
+}
