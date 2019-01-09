@@ -38,22 +38,16 @@ let moods = [cry, sad, smile];
 let needs = [hamburger, intero, poo];
 
 pickMood = function() {
-    setTimeout(() => { 
-        if (document.getElementById("baby").src = smile) {
-            cryBaby.play(),
+    setTimeout(() => {
+        if (document.getElementById("baby").src.endsWith(smile)) {
+            cryBaby.play();
             document.getElementById("baby").src = moods[Math.floor(Math.random()*3)];
-        }
-    }, 1500); 
-};
-
-pickState = function() {
-    setTimeout(() => { 
-        if (document.getElementById("baby").src !== smile) {
-            document.getElementById("needs").src = needs[Math.floor(Math.random()*3)];
-        }
-        else {
-            document.getElementById("baby").src = smile;
-            document.getElementById("need").src = sun;
+            if (!(document.getElementById("baby").src.endsWith(smile))) {
+                document.getElementById("needs").src = needs[Math.floor(Math.random()*3)];
+            }
+            else {
+                pickMood();
+            }
         }
     }, 2000);
 };
@@ -63,10 +57,10 @@ function reset() {
     let gameOver = document.getElementById("gameover");
     let gameOn = document.getElementById("gameon");
         if (gameOver.style.display === "none") {
-        gameOver.style.display = "block",
+        gameOver.style.display = "block";
         gameOn.style.display = "none";
     } else {
-        gameOver.style.display = "none",
+        gameOver.style.display = "none";
         gameOn.style.display = "block";
     }
 };
@@ -75,11 +69,10 @@ function reset() {
 
 function Feed(){
     if (document.getElementById("needs").src = hamburger) {
-        happyBaby.play(),
+        happyBaby.play();
         document.getElementById("baby").src = smile;
         document.getElementById("needs").src = sun;
         pickMood();
-        pickState();
     }
     else {
         // reset();
@@ -88,11 +81,10 @@ function Feed(){
 
 function Play(){
     if (document.getElementById("needs").src = intero) {
-        happyBaby.play(),
+        happyBaby.play();
         document.getElementById("baby").src = smile;
         document.getElementById("needs").src = sun;
         pickMood();
-        pickState();
     }
     else {
         // reset();
@@ -101,11 +93,10 @@ function Play(){
 
 function Change(){
     if (document.getElementById("needs").src = poo) {
-        happyBaby.play(),
+        happyBaby.play();
         document.getElementById("baby").src = smile;
         document.getElementById("needs").src = sun;
         pickMood();
-        pickState();
     }
     else {
         // reset();
@@ -113,4 +104,3 @@ function Change(){
 };
 
 pickMood();
-pickState();
