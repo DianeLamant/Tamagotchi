@@ -1,3 +1,7 @@
+#gameon {
+    padding-top: 100px;
+}
+
 #faces {
     text-align: center;
 }
@@ -6,11 +10,29 @@
     text-align: center;
 }
 
+#buttons .btn {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 2rem;
+}
+
 #gameover {
     text-align: center;
     padding-top: 250px;
+    display: none;
 }
 
-p {
+#gameover p {
+    font-family: 'Black Ops One', cursive;
     font-size: 6rem;
+}
+
+#gameover .btn-primary {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 2rem;
+    background-color: #9575cd;
+    border-color: #9575cd;
+}
+
+#gameover .btn-primary:hover {
+    background-color: #65499c;
 }

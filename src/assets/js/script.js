@@ -1,106 +1,97 @@
-// class Pyramide {
-//     constructor() {
-//         nbEtages = nbEtages;
-//         this.firstFloor = '    *';
-//         this.secondFloor = '  ***';
-//         this.thirdFloor = ' *****';
-//         this.fourthFloor = '*******';
-//     };
-
-//     for (var i = 0; i < nbEtages; i++) {
-
-//         console.log()
-//       }
-
-    // 1er étage : ' ' nbEtages + '*' nbEtage-(nbEtage-1)
-    // 2ème étage : ' ' nbEtages-2 + '*' nbEtage-(nbEtage-2)
-    // 3ème étage : ' ' nbEtages-3 + '*' nbEtage-(nbEtage-3)
-    // 3ème étage : ' ' nbEtages-4 + '*' nbEtage-(nbEtage-4)
-
-//     draw() {
-//         console.log(this.firstFloor,'\n',this.secondFloor,'\n',this.thirdFloor,'\n',this.fourthFloor);
-//     }
-// };
-// let pyramide = new Pyramide();
-// pyramide.draw();
-
-
 let cryBaby = new Audio('assets/sounds/cry.ogg');
 let happyBaby = new Audio('assets/sounds/happy.ogg');
 let smile = "assets/images/faces/smile.png";
 let sad = "assets/images/faces/sad.png";
 let cry = "assets/images/faces/cry.png";
+let tongue = "assets/images/faces/tongue.png";
+let nipple = "assets/images/faces/nipple.png";
+let surprised = "assets/images/faces/surprised.png";
 let sun = "assets/images/thoughts/sun.png";
 let hamburger = "assets/images/thoughts/hamburger.png";
 let intero = "assets/images/thoughts/intero.png";
 let poo = "assets/images/thoughts/poo.png"
 let moods = [cry, sad, smile];
-let needs = [hamburger, intero, poo];
+let needs = [hamburger, poo];
+let gameOver = document.getElementById("gameover");
+let gameOn = document.getElementById("gameon");
+let stop;
+
 
 pickMood = function() {
+    document.getElementById("baby").src = smile;
+    document.getElementById("needs").src = sun;
+    happyBaby.play();
     setTimeout(() => {
         if (document.getElementById("baby").src.endsWith(smile)) {
-            cryBaby.play();
             document.getElementById("baby").src = moods[Math.floor(Math.random()*3)];
-            if (!(document.getElementById("baby").src.endsWith(smile))) {
-                document.getElementById("needs").src = needs[Math.floor(Math.random()*3)];
+            if ((document.getElementById("baby").src.endsWith(cry))) {
+                document.getElementById("needs").src = needs[Math.floor(Math.random()*2)];
+                cryBaby.play();
+                perdu();
+            }
+            else if ((document.getElementById("baby").src.endsWith(sad))) {
+                document.getElementById("needs").src = intero;
+                perdu();
             }
             else {
+                stopPerdu();
                 pickMood();
             }
         }
-    }, 2000);
+    }, 1000);
+    console.log(pickMood);
 };
-
-
-function reset() {
-    let gameOver = document.getElementById("gameover");
-    let gameOn = document.getElementById("gameon");
-        if (gameOver.style.display === "none") {
-        gameOver.style.display = "block";
-        gameOn.style.display = "none";
-    } else {
-        gameOver.style.display = "none";
-        gameOn.style.display = "block";
-    }
-};
-// setTimeout(reset, 6000);
-
 
 function Feed(){
-    if (document.getElementById("needs").src = hamburger) {
-        happyBaby.play();
-        document.getElementById("baby").src = smile;
+    if (document.getElementById("needs").src.endsWith(hamburger)) {
+        document.getElementById("baby").src = nipple;
         document.getElementById("needs").src = sun;
-        pickMood();
-    }
-    else {
-        // reset();
+        setTimeout(() => {
+            stopPerdu();
+            pickMood();
+        }, 1000);
     }
 };
 
 function Play(){
-    if (document.getElementById("needs").src = intero) {
-        happyBaby.play();
-        document.getElementById("baby").src = smile;
+    if (document.getElementById("needs").src.endsWith(intero)) {
+        document.getElementById("baby").src = tongue;
         document.getElementById("needs").src = sun;
-        pickMood();
-    }
-    else {
-        // reset();
+        setTimeout(() => {
+            stopPerdu();
+            pickMood();
+        }, 1000);
     }
 };
 
 function Change(){
-    if (document.getElementById("needs").src = poo) {
-        happyBaby.play();
-        document.getElementById("baby").src = smile;
+    if (document.getElementById("needs").src.endsWith(poo)) {
+        document.getElementById("baby").src = surprised;
         document.getElementById("needs").src = sun;
-        pickMood();
+        setTimeout(() => {
+            stopPerdu();
+            pickMood();
+        }, 1000);
     }
-    else {
-        // reset();
-    }
+};
+
+function perdu() {
+    stop = setTimeout(() => {
+        gameOver.style.display = "block";
+        gameOn.style.display = "none";
+    }, 6000);
+};
+
+function stopPerdu() {
+    clearTimeout(stop);
+};
+
+function Reset(){
+    document.getElementById("baby").src = smile;
+    document.getElementById("needs").src = sun;
+    gameOver.style.display = "none";
+    gameOn.style.display = "block";
+    pickMood();
 };
 
 pickMood();

@@ -7,15 +7,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script type="text/javascript" src="assets/js/script.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|ZCOOL+QingKe+HuangYou" rel="stylesheet">
         <title>Tamagotchi</title>
     </head>
 
     <body>
         <div id="gameon">
             <div id="faces" class="">
-                <img src="assets/images/faces/smile.png" id="baby" alt="baby" width="20%" />
-                <img src="assets/images/thoughts/sun.png" id="needs" alt="needs" width="10%" />
+                <img src="assets/images/faces/smile.png" id="baby" alt="baby" width="280px" />
+                <img src="assets/images/thoughts/sun.png" id="needs" alt="needs" width="140px" />
             </div>  
             <div id="buttons" class="">
                 <button onclick="Feed()" class="btn btn-outline-success">Nourrir</button>
@@ -23,10 +23,12 @@
                 <button onclick="Change()" class="btn btn-outline-danger">Changer</button>
             </div>
         </div>
-        <div id="gameover" style="display:none">
+        <div id="gameover">
             <p>Game Over</p>
+            <button onclick="Reset()" class="btn btn-primary">Rejouer</button>
         </div>
 
     </body> 
+    <script type="text/javascript" src="assets/js/script.js"></script>
 
 </html>
