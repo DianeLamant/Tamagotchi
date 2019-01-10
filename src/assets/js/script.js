@@ -15,7 +15,7 @@ let needs = [hamburger, poo];
 let gameOver = document.getElementById("gameover");
 let gameOn = document.getElementById("gameon");
 let stop;
-
+let score = 0;
 
 pickMood = function() {
     document.getElementById("baby").src = smile;
@@ -39,41 +39,59 @@ pickMood = function() {
             }
         }
     }, 1000);
-    console.log(pickMood);
 };
 
 function Feed(){
     if (document.getElementById("needs").src.endsWith(hamburger)) {
+        score++;
+        updateScore();
         document.getElementById("baby").src = nipple;
         document.getElementById("needs").src = sun;
         setTimeout(() => {
             stopPerdu();
             pickMood();
         }, 1000);
+    } else {
+        score--;
+        updateScore();
     }
 };
 
 function Play(){
     if (document.getElementById("needs").src.endsWith(intero)) {
+        score++;
+        updateScore();
         document.getElementById("baby").src = tongue;
         document.getElementById("needs").src = sun;
         setTimeout(() => {
             stopPerdu();
             pickMood();
         }, 1000);
+    } else {
+        score--;
+        updateScore();
     }
 };
 
 function Change(){
     if (document.getElementById("needs").src.endsWith(poo)) {
+        score++;
+        updateScore();
         document.getElementById("baby").src = surprised;
         document.getElementById("needs").src = sun;
         setTimeout(() => {
             stopPerdu();
             pickMood();
         }, 1000);
+    } else {
+        score--;
+        updateScore();
     }
 };
+
+function updateScore() {
+    document.getElementById("resultat").innerHTML = score;
+}
 
 function perdu() {
     stop = setTimeout(() => {
@@ -91,6 +109,8 @@ function Reset(){
     document.getElementById("needs").src = sun;
     gameOver.style.display = "none";
     gameOn.style.display = "block";
+    score = 0;
+    updateScore();
     pickMood();
 };
 

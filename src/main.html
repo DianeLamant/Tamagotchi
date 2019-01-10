@@ -12,12 +12,18 @@
     </head>
 
     <body>
+        <div id="compteur">
+            <p>Score : <span id="resultat"> 0</span></p>
+        </div>
         <div id="gameon">
-            <div id="faces" class="">
+            <div id="faces">
                 <img src="assets/images/faces/smile.png" id="baby" alt="baby" width="280px" />
                 <img src="assets/images/thoughts/sun.png" id="needs" alt="needs" width="140px" />
-            </div>  
-            <div id="buttons" class="">
+            </div>
+            <!-- <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 60%"></div>
+            </div> -->
+            <div id="buttons">
                 <button onclick="Feed()" class="btn btn-outline-success">Nourrir</button>
                 <button onclick="Play()" class="btn btn-outline-warning">Jouer</button>
                 <button onclick="Change()" class="btn btn-outline-danger">Changer</button>
@@ -28,7 +34,7 @@
             <button onclick="Reset()" class="btn btn-primary">Rejouer</button>
         </div>
 
-    </body> 
+    </body>
     <script type="text/javascript" src="assets/js/script.js"></script>
 
 </html>
