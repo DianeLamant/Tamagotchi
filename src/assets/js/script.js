@@ -14,23 +14,26 @@ let moods = [cry, sad, smile];
 let needs = [hamburger, poo];
 let gameOver = document.getElementById("gameover");
 let gameOn = document.getElementById("gameon");
+let idBaby = document.getElementById("baby");
+let idNeeds = document.getElementById("needs");
 let stop;
 let score = 0;
+let progress = document.getElementById("progress");
 
 pickMood = function() {
-    document.getElementById("baby").src = smile;
-    document.getElementById("needs").src = sun;
+    idBaby.src = smile;
+    idNeeds.src = sun;
     happyBaby.play();
     setTimeout(() => {
-        if (document.getElementById("baby").src.endsWith(smile)) {
-            document.getElementById("baby").src = moods[Math.floor(Math.random()*3)];
-            if ((document.getElementById("baby").src.endsWith(cry))) {
-                document.getElementById("needs").src = needs[Math.floor(Math.random()*2)];
+        if (idBaby.src.endsWith(smile)) {
+            idBaby.src = moods[Math.floor(Math.random()*3)];
+            if ((idBaby.src.endsWith(cry))) {
+                idNeeds.src = needs[Math.floor(Math.random()*2)];
                 cryBaby.play();
                 perdu();
             }
-            else if ((document.getElementById("baby").src.endsWith(sad))) {
-                document.getElementById("needs").src = intero;
+            else if ((idBaby.src.endsWith(sad))) {
+                idNeeds.src = intero;
                 perdu();
             }
             else {
@@ -40,58 +43,6 @@ pickMood = function() {
         }
     }, 1000);
 };
-
-function Feed(){
-    if (document.getElementById("needs").src.endsWith(hamburger)) {
-        score++;
-        updateScore();
-        document.getElementById("baby").src = nipple;
-        document.getElementById("needs").src = sun;
-        setTimeout(() => {
-            stopPerdu();
-            pickMood();
-        }, 1000);
-    } else {
-        score--;
-        updateScore();
-    }
-};
-
-function Play(){
-    if (document.getElementById("needs").src.endsWith(intero)) {
-        score++;
-        updateScore();
-        document.getElementById("baby").src = tongue;
-        document.getElementById("needs").src = sun;
-        setTimeout(() => {
-            stopPerdu();
-            pickMood();
-        }, 1000);
-    } else {
-        score--;
-        updateScore();
-    }
-};
-
-function Change(){
-    if (document.getElementById("needs").src.endsWith(poo)) {
-        score++;
-        updateScore();
-        document.getElementById("baby").src = surprised;
-        document.getElementById("needs").src = sun;
-        setTimeout(() => {
-            stopPerdu();
-            pickMood();
-        }, 1000);
-    } else {
-        score--;
-        updateScore();
-    }
-};
-
-function updateScore() {
-    document.getElementById("resultat").innerHTML = score;
-}
 
 function perdu() {
     stop = setTimeout(() => {
@@ -104,13 +55,67 @@ function stopPerdu() {
     clearTimeout(stop);
 };
 
-function Reset(){
-    document.getElementById("baby").src = smile;
-    document.getElementById("needs").src = sun;
-    gameOver.style.display = "none";
-    gameOn.style.display = "block";
+function Feed(){
+    if (idNeeds.src.endsWith(hamburger)) {
+        score++;
+        updateScore();
+        idBaby.src = nipple;
+        idNeeds.src = sun;
+        relanceJeu()
+    } else {
+        score--;
+        updateScore();
+    }
+};
+
+function Play(){
+    if (idNeeds.src.endsWith(intero)) {
+        score++;
+        updateScore();
+        idBaby.src = tongue;
+        idNeeds.src = sun;
+        relanceJeu()
+    } else {
+        score--;
+        updateScore();
+    }
+};
+
+function Change(){
+    if (idNeeds.src.endsWith(poo)) {
+        score++;
+        updateScore();
+        idBaby.src = surprised;
+        idNeeds.src = sun;
+        relanceJeu()
+    } else {
+        score--;
+        updateScore();
+    }
+};
+
+function updateScore() {
+    document.getElementById("resultat").innerHTML = score;
+}
+
+function resetScore() {
     score = 0;
     updateScore();
+}
+
+function relanceJeu() {
+    setTimeout(() => {
+        stopPerdu();
+        pickMood();
+    }, 1000);
+}
+
+function Reset(){
+    idBaby.src = smile;
+    idNeeds.src = sun;
+    gameOver.style.display = "none";
+    gameOn.style.display = "block";
+    resetScore()
     pickMood();
 };
 

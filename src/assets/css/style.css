@@ -8,6 +8,12 @@
 
 #faces {
     text-align: center;
+    padding-bottom: 20px;
+}
+
+/* #gameon .progress {
+    height: 1.3rem;
+    margin: auto;
 }
 
 .progress .progress-bar {
@@ -15,11 +21,12 @@
 }
 
 .progress, .progress-bar {
-    width: 200px;
-}
+    width: 500px;
+} */
 
 #buttons {
     text-align: center;
+    padding-top: 40px;
 }
 
 #buttons .btn {
@@ -48,3 +55,4 @@
 #gameover .btn-primary:hover {
     background-color: #65499c;
 }
+
