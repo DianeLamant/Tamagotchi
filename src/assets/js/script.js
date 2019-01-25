@@ -20,74 +20,80 @@ let stop;
 let score = 0;
 let progress = document.getElementById("progress");
 
-pickMood = function() {
+pickMood = function () {
     idBaby.src = smile;
     idNeeds.src = sun;
-    happyBaby.play();
+    // happyBaby.play();
     setTimeout(() => {
         if (idBaby.src.endsWith(smile)) {
-            idBaby.src = moods[Math.floor(Math.random()*3)];
+            idBaby.src = moods[Math.floor(Math.random() * 3)];
             if ((idBaby.src.endsWith(cry))) {
-                idNeeds.src = needs[Math.floor(Math.random()*2)];
+                idNeeds.src = needs[Math.floor(Math.random() * 2)];
                 cryBaby.play();
                 perdu();
+                progress.classList.add("progress-bar-danger");
             }
             else if ((idBaby.src.endsWith(sad))) {
                 idNeeds.src = intero;
                 perdu();
+                progress.classList.add("progress-bar-danger");
+
             }
             else {
-                stopPerdu();
                 pickMood();
+                stopPerdu();
             }
         }
     }, 1000);
 };
 
 function perdu() {
-    stop = setTimeout(() => {
-        gameOver.style.display = "block";
-        gameOn.style.display = "none";
-    }, 6000);
+    // stop = setTimeout(() => {
+    //     gameOver.style.display = "block";
+    //     gameOn.style.display = "none";
+    // }, 6000);
 };
 
 function stopPerdu() {
     clearTimeout(stop);
 };
 
-function Feed(){
+function Feed() {
     if (idNeeds.src.endsWith(hamburger)) {
         score++;
         updateScore();
         idBaby.src = nipple;
         idNeeds.src = sun;
         relanceJeu()
+        progress.classList.remove("progress-bar-danger");
     } else {
         score--;
         updateScore();
     }
 };
 
-function Play(){
+function Play() {
     if (idNeeds.src.endsWith(intero)) {
         score++;
         updateScore();
         idBaby.src = tongue;
         idNeeds.src = sun;
         relanceJeu()
+        progress.classList.remove("progress-bar-danger");
     } else {
         score--;
         updateScore();
     }
 };
 
-function Change(){
+function Change() {
     if (idNeeds.src.endsWith(poo)) {
         score++;
         updateScore();
         idBaby.src = surprised;
         idNeeds.src = sun;
         relanceJeu()
+        progress.classList.remove("progress-bar-danger");
     } else {
         score--;
         updateScore();
@@ -110,13 +116,14 @@ function relanceJeu() {
     }, 1000);
 }
 
-function Reset(){
+function Reset() {
     idBaby.src = smile;
     idNeeds.src = sun;
     gameOver.style.display = "none";
     gameOn.style.display = "block";
     resetScore()
     pickMood();
+    progress.classList.remove("progress-bar-danger");
 };
 
 pickMood();
