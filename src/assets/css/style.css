@@ -1,5 +1,25 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    background: url(../images/background2_blur.jpg) no-repeat;
+    background-size: cover;
+}
+
+#game {
+    margin-top: 5%;
+    padding: 30px 0;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 200px;
+}
+
 #compteur {
-    padding-top: 100px;
     text-align: center;
     font-family: 'ZCOOL QingKe HuangYou', cursive;
     font-size: 2rem;
@@ -11,12 +31,19 @@
     padding-bottom: 20px;
 }
 
-#progress {
-    height: 30px;
+#baby {
+    width: 30%;
+}
+
+#needs {
+    margin: 0 0 8% 10%;
+    width: 17%;
+    animation-duration: 0.4s;
 }
 
 .progress {
-    width: 600px;
+    height: 30px;
+    width: 60%;
     display: flex;
     background-color: white;
     border: 1px solid rgba(126, 117, 126, 0.8);
@@ -34,8 +61,6 @@
         width: 0;
     }
 
-    
-
     100% {
         width: 100%;
     }
@@ -45,8 +70,6 @@
     0% {
         width: 0;
     }
-
-
 
     100% {
         width: 100%;
@@ -62,10 +85,15 @@
 #buttons .btn {
     font-family: 'ZCOOL QingKe HuangYou', cursive;
     font-size: 2rem;
+    border-radius: 200px;
 }
 
 #buttons .btn-outline-warning:hover {
     color: white;
+}
+
+#resultat {
+    display: inline-block;
 }
 
 #gameover {
@@ -90,3 +118,95 @@
     background-color: #65499c;
 }
 
+@keyframes unzoom {
+    0% {
+      transform: scale(6);
+    }
+    100% {
+      transform: scale(1);
+    }
+}
+
+@-webkit-keyframes unzoom {
+    0% {
+      -webkit-transform: scale(6);
+    }
+    100% {
+      -webkit-transform: scale(1);
+    }
+}
+
+
+@media screen and (max-width: 798px) {
+
+    #game {
+        width: 90%;
+    }
+
+    #compteur {
+        font-size: 3rem;
+    }
+
+    #baby {
+        width: 40%;
+    }
+
+    #needs {
+        width: 20%;
+    }
+
+    .progress {
+        height: 40px;
+        width: 70%;
+    }
+
+    #buttons .btn {
+        font-size: 3rem;
+    }
+
+    #gameover p {
+        font-size: 8rem;
+    }
+
+    #gameover .btn-primary {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    #game {
+        border-radius: 50px;
+    }
+
+    #compteur {
+        font-size: 2rem;
+    }
+
+    .progress {
+        height: 30px;
+        width: 70%;
+    }
+
+    #buttons .btn {
+        font-size: 2rem;
+    }
+
+    #gameover p {
+        font-size: 5rem;
+    }
+
+    #gameover .btn-primary {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    #buttons .btn {
+        font-size: 1.5rem;
+    }
+
+    #gameover .btn-primary {
+        font-size: 1.5rem;
+    }
+}
