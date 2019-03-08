@@ -54,6 +54,7 @@ body {
     display: flex;
     background-color: white;
     border: 1px solid rgba(126, 117, 126, 0.8);
+    /* display: none; */
 }
 
 .progress-bar-danger {
@@ -84,16 +85,20 @@ body {
 }
 
 
-#buttons {
+#gameBtn, #playBtn {
     text-align: center;
     padding-top: 40px;
 }
 
-#buttons .btn {
+#gameBtn .btn, #playBtn .btn {
     font-family: 'ZCOOL QingKe HuangYou', cursive;
     font-size: 2rem;
     border-radius: 200px;
     color: white;
+}
+
+#gameBtn .btn {
+    /* display: none; */
 }
 
 #resultat {

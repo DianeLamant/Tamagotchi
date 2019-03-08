@@ -13,12 +13,25 @@ let gameOver = document.getElementById("gameover");
 let gameOn = document.getElementById("gameon");
 let baby = document.getElementById("baby");
 let needs = document.getElementById("needs");
-let resultat = document.getElementById("resultat")
+let playBtn = document.getElementById("playBtn");
+let gameBtn = document.getElementById("gameBtn");
+let resultat = document.getElementById("resultat");
 let stop;
 let score = 0;
+let divProgress = document.getElementsByClassName("progress")[0];
 let progress = document.getElementById("progress");
 
-pickMood = function () {
+function hideElmt() {
+    divProgress.style.display = "none";
+    gameBtn.style.display = "none";
+}
+
+hideElmt();
+
+ function pickMood() {
+    divProgress.style.display = "block";
+    gameBtn.style.display = "block";
+    playBtn.style.display = "none";
     baby.src = smile;
     baby.classList.remove("animated", "infinite", "shake");
     needs.src = empty;
@@ -134,4 +147,4 @@ function reset() {
     progress.classList.remove("progress-bar-danger");
 };
 
-pickMood();
+// pickMood();
