@@ -1,12 +1,12 @@
-let cryBaby = new Audio('assets/sounds/cry.ogg');
-let happyBaby = new Audio('assets/sounds/happy.ogg');
+// let cryBaby = new Audio('assets/sounds/cry.ogg');
+// let happyBaby = new Audio('assets/sounds/happy.ogg');
 let smile = "assets/images/faces/happygiraffe.png";
 let hungry = "assets/images/faces/hungrygiraffe.png";
 let bored = "assets/images/faces/boredgiraffe.png";
 let oups = "assets/images/faces/oupsgiraffe.png";
 let empty = "assets/images/thoughts/empty.png";
-let hamburger = "assets/images/thoughts/002-branch.png";
-let intero = "assets/images/thoughts/001-beach-ball.png";
+let branch = "assets/images/thoughts/002-branch.png";
+let ball = "assets/images/thoughts/001-beach-ball.png";
 let poo = "assets/images/thoughts/003-poo.png"
 let moods = [bored, smile, oups, hungry];
 let gameOver = document.getElementById("gameover");
@@ -21,29 +21,22 @@ let score = 0;
 let divProgress = document.getElementsByClassName("progress")[0];
 let progress = document.getElementById("progress");
 
-function hideElmt() {
-    divProgress.style.display = "none";
-    gameBtn.style.display = "none";
-}
-
-hideElmt();
-
  function pickMood() {
-    divProgress.style.display = "block";
+    divProgress.style.display = "flex";
     gameBtn.style.display = "block";
     playBtn.style.display = "none";
     baby.src = smile;
     baby.classList.remove("animated", "infinite", "shake");
-    needs.src = empty;
-    happyBaby.play();
+    // needs.src = empty;
+    // happyBaby.play();
     setTimeout(() => {
         if (baby.src.endsWith(smile)) {
             baby.src = moods[Math.floor(Math.random() * 4)];
             if ((baby.src.endsWith(bored))) {
-                needs.src = intero;
+                needs.src = ball;
                 needAppear();
             } else if ((baby.src.endsWith(hungry))) {
-                needs.src = hamburger;
+                needs.src = branch;
                 needAppear();
             } else if ((baby.src.endsWith(oups))) {
                 needs.src = poo;
@@ -60,10 +53,10 @@ function needAppear() {
     needs.classList.remove("slideOutRight");
     needs.classList.add("slideInRight");
     baby.classList.add("animated", "infinite", "shake");
-    happyBaby.pause();
-    cryBaby.play();
+    // happyBaby.pause();
+    // cryBaby.play();
     perdu();
-    progress.classList.add("progress-bar-danger");
+    progress.classList.add("progress-bar-fill");
 }
 
 function perdu() {
@@ -79,7 +72,7 @@ function stopPerdu() {
 };
 
 function feed() {
-    if (needs.src.endsWith(hamburger)) {
+    if (needs.src.endsWith(branch)) {
         goodAnswer();
     } else {
         wrongAnswer();
@@ -87,7 +80,7 @@ function feed() {
 };
 
 function play() {
-    if (needs.src.endsWith(intero)) {
+    if (needs.src.endsWith(ball)) {
         goodAnswer();
     } else {
         wrongAnswer();
@@ -106,10 +99,10 @@ function goodAnswer() {
     score++;
     updateScore();
     baby.src = smile;
-    cryBaby.pause();
+    // cryBaby.pause();
     needs.classList.remove("slideInRight");
     needs.classList.add("slideOutRight");
-    progress.classList.remove("progress-bar-danger");
+    progress.classList.remove("progress-bar-fill");
     stopPerdu();
     pickMood();
 }
@@ -144,7 +137,6 @@ function reset() {
     gameOn.style.display = "block";
     resetScore();
     pickMood();
-    progress.classList.remove("progress-bar-danger");
+    progress.classList.remove("progress-bar-fill");
 };
 
-// pickMood();
