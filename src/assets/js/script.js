@@ -1,5 +1,6 @@
-// let cryBaby = new Audio('assets/sounds/cry.ogg');
-// let happyBaby = new Audio('assets/sounds/happy.ogg');
+let alertSnd = new Audio('assets/sounds/cartoon-computer_ds.mp3');
+let goodSnd = new Audio('assets/sounds/banana-peel.mp3');
+let lostSnd = new Audio('assets/sounds/bast.mp3')
 let smile = "assets/images/faces/happygiraffe.png";
 let hungry = "assets/images/faces/hungrygiraffe.png";
 let bored = "assets/images/faces/boredgiraffe.png";
@@ -11,7 +12,7 @@ let poo = "assets/images/thoughts/003-poo.png"
 let moods = [bored, smile, oups, hungry];
 let gameOver = document.getElementById("gameover");
 let gameOn = document.getElementById("gameon");
-let baby = document.getElementById("baby");
+let face = document.getElementById("face");
 let needs = document.getElementById("needs");
 let playBtn = document.getElementById("playBtn");
 let gameBtn = document.getElementById("gameBtn");
@@ -25,20 +26,19 @@ let progress = document.getElementById("progress");
     divProgress.style.display = "flex";
     gameBtn.style.display = "block";
     playBtn.style.display = "none";
-    baby.src = smile;
-    baby.classList.remove("animated", "infinite", "shake");
+    face.src = smile;
+    face.classList.remove("animated", "infinite", "shake");
     // needs.src = empty;
-    // happyBaby.play();
     setTimeout(() => {
-        if (baby.src.endsWith(smile)) {
-            baby.src = moods[Math.floor(Math.random() * 4)];
-            if ((baby.src.endsWith(bored))) {
+        if (face.src.endsWith(smile)) {
+            face.src = moods[Math.floor(Math.random() * 4)];
+            if ((face.src.endsWith(bored))) {
                 needs.src = ball;
                 needAppear();
-            } else if ((baby.src.endsWith(hungry))) {
+            } else if ((face.src.endsWith(hungry))) {
                 needs.src = branch;
                 needAppear();
-            } else if ((baby.src.endsWith(oups))) {
+            } else if ((face.src.endsWith(oups))) {
                 needs.src = poo;
                 needAppear();
             } else {
@@ -52,15 +52,17 @@ let progress = document.getElementById("progress");
 function needAppear() {
     needs.classList.remove("slideOutRight");
     needs.classList.add("slideInRight");
-    baby.classList.add("animated", "infinite", "shake");
-    // happyBaby.pause();
-    // cryBaby.play();
+    face.classList.add("animated", "infinite", "shake");
+    goodSnd.pause();
+    alertSnd.play();
     perdu();
     progress.classList.add("progress-bar-fill");
 }
 
 function perdu() {
     stop = setTimeout(() => {
+        alertSnd.pause();
+        lostSnd.play();
         gameOver.style.display = "block";
         document.getElementById("gameOverText").style = '-webkit-animation : unzoom 0.5s';
         gameOn.style.display = "none";
@@ -98,8 +100,9 @@ function change() {
 function goodAnswer() {
     score++;
     updateScore();
-    baby.src = smile;
-    // cryBaby.pause();
+    face.src = smile;
+    goodSnd.play();
+    alertSnd.pause();
     needs.classList.remove("slideInRight");
     needs.classList.add("slideOutRight");
     progress.classList.remove("progress-bar-fill");
@@ -131,7 +134,7 @@ function resetScore() {
 }
 
 function reset() {
-    baby.src = smile;
+    face.src = smile;
     needs.src = empty;
     gameOver.style.display = "none";
     gameOn.style.display = "block";

@@ -28,11 +28,7 @@ body {
     letter-spacing: 3px;
 }
 
-#faces {
-    padding-bottom: 40px;
-}
-
-#baby {
+#face {
     width: 35%;
 }
 
@@ -43,6 +39,7 @@ body {
 }
 
 .progress {
+    margin-top: 40px;
     height: 30px;
     width: 60%;
     display: none;
@@ -87,10 +84,14 @@ body {
     color: white;
 }
 
-#gameBtn {
+#gameBtn, #playBtn {
     padding-top: 40px;
+}
+
+#gameBtn {
     display: none;
 }
+
 
 #resultat {
     display: inline-block;
