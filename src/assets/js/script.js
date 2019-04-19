@@ -22,7 +22,7 @@ let score = 0;
 let divProgress = document.getElementsByClassName("progress")[0];
 let progress = document.getElementById("progress");
 
- function pickMood() {
+function pickMood() {
     divProgress.style.display = "flex";
     gameBtn.style.display = "block";
     playBtn.style.display = "none";
@@ -105,6 +105,9 @@ function goodAnswer() {
     alertSnd.pause();
     needs.classList.remove("slideInRight");
     needs.classList.add("slideOutRight");
+    setTimeout(() => {
+        needs.src = empty;
+    }, 200);
     progress.classList.remove("progress-bar-fill");
     stopPerdu();
     pickMood();
